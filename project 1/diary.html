@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的日记 - Life Record</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="gradient-bg">
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <a href="index.html">Life Record</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="diary.html" class="active"><i class="fas fa-book"></i> 日记</a></li>
+                <li><a href="photos.html"><i class="fas fa-images"></i> 相册</a></li>
+                <li><a href="goals.html"><i class="fas fa-tasks"></i> 目标</a></li>
+                <li><a href="mood.html"><i class="fas fa-smile"></i> 心情</a></li>
+                <li><a href="timeline.html"><i class="fas fa-clock"></i> 时间线</a></li>
+            </ul>
+            <div class="user-menu">
+                <img src="avatar.jpg" alt="用户头像" class="avatar glow-effect">
+                <div class="dropdown-content">
+                    <a href="profile.html" class="gradient-hover"><i class="fas fa-user"></i> 个人资料</a>
+                    <a href="settings.html" class="gradient-hover"><i class="fas fa-cog"></i> 设置</a>
+                    <a href="#logout" class="gradient-hover"><i class="fas fa-sign-out-alt"></i> 退出</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="diary-section section-gradient">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-book"></i> 我的日记</h2>
+                    <button class="gradient-btn new-diary-btn">
+                        <i class="fas fa-plus"></i> 写新日记
+                    </button>
+                </div>
+
+                <!-- 日记筛选器 -->
+                <div class="diary-filters">
+                    <div class="search-bar">
+                        <input type="text" placeholder="搜索日记..." class="gradient-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-options">
+                        <select class="gradient-select">
+                            <option value="">全部心情</option>
+                            <option value="happy">开心</option>
+                            <option value="normal">一般</option>
+                            <option value="sad">难过</option>
+                        </select>
+                        <select class="gradient-select">
+                            <option value="">全部天气</option>
+                            <option value="sunny">晴天</option>
+                            <option value="cloudy">多云</option>
+                            <option value="rainy">下雨</option>
+                        </select>
+                        <select class="gradient-select">
+                            <option value="newest">最新优先</option>
+                            <option value="oldest">最早优先</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 日记列表 -->
+                <div class="diary-grid">
+                    <!-- 日记卡片示例 -->
+                    <div class="diary-card gradient-card">
+                        <div class="card-header">
+                            <time>2024-01-20</time>
+                            <div class="card-tags">
+                                <span class="mood-tag happy gradient-tag">开心</span>
+                                <span class="weather-tag sunny gradient-tag">晴天</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>美好的一天</h3>
+                            <p>今天天气很好，和朋友一起去了公园，感受到了春天的气息...</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="gradient-btn-small edit-btn">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="gradient-btn-small delete-btn">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 更多日记卡片 -->
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination">
+                    <button class="gradient-btn-small"><i class="fas fa-chevron-left"></i></button>
+                    <span class="page-number active">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                    <button class="gradient-btn-small"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 写日记弹窗 -->
+    <div class="modal" id="diary-modal">
+        <div class="modal-content gradient-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-pen"></i> 写日记</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="diary-form">
+                    <input type="text" placeholder="标题" required class="gradient-input">
+                    <textarea placeholder="今天发生了什么..." required class="gradient-input"></textarea>
+                    <div class="form-footer">
+                        <div class="tags">
+                            <select class="mood-select gradient-select">
+                                <option value="">选择心情</option>
+                                <option value="happy">开心</option>
+                                <option value="normal">一般</option>
+                                <option value="sad">难过</option>
+                            </select>
+                            <select class="weather-select gradient-select">
+                                <option value="">选择天气</option>
+                                <option value="sunny">晴天</option>
+                                <option value="cloudy">多云</option>
+                                <option value="rainy">下雨</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="gradient-btn-outline cancel-btn">取消</button>
+                            <button type="submit" class="gradient-btn">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="gradient-footer">
+        <div class="container">
+            <p>&copy; 2024 Life Record. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="diary.js"></script>
+</body>
+</html> 

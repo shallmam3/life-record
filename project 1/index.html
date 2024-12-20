@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Record - 记录生活点滴</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="gradient-bg">
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                Life Record
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="diary.html"><i class="fas fa-book"></i> 日记</a></li>
+                <li><a href="photos.html"><i class="fas fa-images"></i> 相册</a></li>
+                <li><a href="goals.html"><i class="fas fa-tasks"></i> 目标</a></li>
+                <li><a href="mood.html"><i class="fas fa-smile"></i> 心情</a></li>
+                <li><a href="timeline.html"><i class="fas fa-clock"></i> 时间线</a></li>
+            </ul>
+            <div class="user-menu">
+                <img src="avatar.jpg" alt="用户头像" class="avatar glow-effect">
+                <div class="dropdown-content">
+                    <a href="#profile" class="gradient-hover"><i class="fas fa-user"></i> 个人资料</a>
+                    <a href="#settings" class="gradient-hover"><i class="fas fa-cog"></i> 设置</a>
+                    <a href="#logout" class="gradient-hover"><i class="fas fa-sign-out-alt"></i> 退出</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 快速记录区 -->
+        <section id="quick-record" class="section-gradient">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-plus-circle"></i> 快速记录</h2>
+                <div class="record-options">
+                    <button class="record-btn gradient-card" data-type="diary">
+                        <i class="fas fa-pen"></i>
+                        <span>写日记</span>
+                    </button>
+                    <button class="record-btn gradient-card" data-type="photo">
+                        <i class="fas fa-camera"></i>
+                        <span>添加照片</span>
+                    </button>
+                    <button class="record-btn gradient-card" data-type="mood">
+                        <i class="fas fa-heart"></i>
+                        <span>记录心情</span>
+                    </button>
+                    <button class="record-btn gradient-card" data-type="goal">
+                        <i class="fas fa-flag"></i>
+                        <span>设置目标</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最近记录 -->
+        <section id="recent-records">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-clock-rotate-left"></i> 最近记录</h2>
+                <div class="records-grid">
+                    <!-- 日记卡片 -->
+                    <div class="record-card diary gradient-card">
+                        <div class="card-header">
+                            <i class="fas fa-book"></i>
+                            <span>日记</span>
+                            <time>2024-01-20</time>
+                        </div>
+                        <div class="card-content">
+                            <h3>美好的一天</h3>
+                            <p>今天天气很好，和朋友一起去了公园...</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="mood-tag happy gradient-tag">开心</span>
+                            <span class="weather-tag sunny gradient-tag">晴天</span>
+                        </div>
+                    </div>
+
+                    <!-- 照片卡片 -->
+                    <div class="record-card photo gradient-card">
+                        <div class="card-header">
+                            <i class="fas fa-image"></i>
+                            <span>照片</span>
+                            <time>2024-01-19</time>
+                        </div>
+                        <div class="card-content">
+                            <img src="sample-photo.jpg" alt="照片" class="hover-zoom">
+                            <p>美丽的日落</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="location-tag gradient-tag">城市公园</span>
+                        </div>
+                    </div>
+
+                    <!-- 目标卡片 -->
+                    <div class="record-card goal gradient-card">
+                        <div class="card-header">
+                            <i class="fas fa-flag"></i>
+                            <span>目标</span>
+                            <time>2024-01-18</time>
+                        </div>
+                        <div class="card-content">
+                            <h3>学习编程</h3>
+                            <div class="progress-bar">
+                                <div class="progress gradient-progress" style="width: 60%;">60%</div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="status-tag in-progress gradient-tag">进行中</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计分析 -->
+        <section id="statistics" class="section-gradient">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> 生活统计</h2>
+                <div class="stats-grid">
+                    <div class="stat-card gradient-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>记录天数</h3>
+                        <p class="stat-number glow-text">365</p>
+                        <p class="stat-text">持续记录中</p>
+                    </div>
+                    <div class="stat-card gradient-card">
+                        <i class="fas fa-smile-beam"></i>
+                        <h3>心情指数</h3>
+                        <p class="stat-number glow-text">8.5</p>
+                        <p class="stat-text">心情愉悦</p>
+                    </div>
+                    <div class="stat-card gradient-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>目标完成</h3>
+                        <p class="stat-number glow-text">12</p>
+                        <p class="stat-text">继续加油</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="gradient-footer">
+        <div class="container">
+            <p>&copy; 2024 Life Record. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 弹出窗口 -->
+    <div class="modal" id="quick-diary-modal">
+        <div class="modal-content gradient-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-pen"></i> 写日记</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="diary-form">
+                    <input type="text" placeholder="标题" required class="gradient-input">
+                    <textarea placeholder="今天发生了什么..." required class="gradient-input"></textarea>
+                    <div class="form-footer">
+                        <div class="tags">
+                            <select class="mood-select gradient-select">
+                                <option value="">选择心情</option>
+                                <option value="happy">开心</option>
+                                <option value="normal">一般</option>
+                                <option value="sad">难过</option>
+                            </select>
+                            <select class="weather-select gradient-select">
+                                <option value="">选择天气</option>
+                                <option value="sunny">晴天</option>
+                                <option value="cloudy">多云</option>
+                                <option value="rainy">下雨</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn gradient-btn">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 

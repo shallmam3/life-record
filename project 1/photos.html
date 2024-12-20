@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的相册 - Life Record</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="photos-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="gradient-bg">
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <a href="index.html">Life Record</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="diary.html"><i class="fas fa-book"></i> 日记</a></li>
+                <li><a href="photos.html" class="active"><i class="fas fa-images"></i> 相册</a></li>
+                <li><a href="goals.html"><i class="fas fa-tasks"></i> 目标</a></li>
+                <li><a href="mood.html"><i class="fas fa-smile"></i> 心情</a></li>
+                <li><a href="timeline.html"><i class="fas fa-clock"></i> 时间线</a></li>
+            </ul>
+            <div class="user-menu">
+                <img src="avatar.jpg" alt="用户头像" class="avatar glow-effect">
+                <div class="dropdown-content">
+                    <a href="profile.html" class="gradient-hover"><i class="fas fa-user"></i> 个人资料</a>
+                    <a href="settings.html" class="gradient-hover"><i class="fas fa-cog"></i> 设置</a>
+                    <a href="#logout" class="gradient-hover"><i class="fas fa-sign-out-alt"></i> 退出</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="photos-section section-gradient">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-images"></i> 我的相册</h2>
+                    <div class="header-actions">
+                        <button type="button" class="gradient-btn new-album-btn" id="newAlbumBtn">
+                            <i class="fas fa-folder-plus"></i> 新建相册
+                        </button>
+                        <button type="button" class="gradient-btn upload-photos-btn" id="uploadPhotosBtn">
+                            <i class="fas fa-upload"></i> 上传照片
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 相册筛选器 -->
+                <div class="photos-filters">
+                    <div class="search-bar">
+                        <input type="text" placeholder="搜索相册或照片..." class="gradient-input" id="searchInput">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-options">
+                        <select class="gradient-select" id="albumTypeSelect">
+                            <option value="all">所有相册</option>
+                            <option value="recent">最近添加</option>
+                            <option value="favorites">我的收藏</option>
+                        </select>
+                        <select class="gradient-select" id="sortOrderSelect">
+                            <option value="date-desc">最新优先</option>
+                            <option value="date-asc">最早优先</option>
+                            <option value="name-asc">名称升序</option>
+                            <option value="name-desc">名称降序</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 相册网格 -->
+                <div class="albums-grid" id="albumsGrid">
+                    <!-- 相册示例 -->
+                    <div class="album-card gradient-card">
+                        <div class="album-cover">
+                            <img src="sample-album-cover.jpg" alt="相册封面">
+                            <div class="album-overlay">
+                                <span class="photo-count"><i class="fas fa-image"></i> 24</span>
+                                <div class="album-actions">
+                                    <button class="action-btn view-btn" title="查看">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn edit-btn" title="编辑">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete-btn" title="删除">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3>春日旅行</h3>
+                            <p class="album-meta">
+                                <span><i class="fas fa-calendar"></i> 2024-01-20</span>
+                                <span><i class="fas fa-map-marker-alt"></i> 杭州</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 照片网格（默认隐藏，点击相册后显示） -->
+                <div class="photos-grid" style="display: none;">
+                    <div class="photos-header">
+                        <button class="back-to-albums gradient-btn-small">
+                            <i class="fas fa-arrow-left"></i> 返回相册
+                        </button>
+                        <h3>春日旅行</h3>
+                        <button class="add-photos gradient-btn-small">
+                            <i class="fas fa-plus"></i> 添加照片
+                        </button>
+                    </div>
+                    <div class="photos-container">
+                        <!-- 照片示例 -->
+                        <div class="photo-card">
+                            <img src="sample-photo.jpg" alt="照片">
+                            <div class="photo-overlay">
+                                <div class="photo-actions">
+                                    <button class="action-btn preview-btn" title="预览">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                    <button class="action-btn favorite-btn" title="收藏">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="action-btn delete-btn" title="删除">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 新建相册弹窗 -->
+    <div class="modal" id="new-album-modal">
+        <div class="modal-content gradient-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-folder-plus"></i> 新建相册</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="album-form">
+                    <input type="text" name="name" placeholder="相册名称" required class="gradient-input">
+                    <input type="text" name="location" placeholder="拍摄地点" class="gradient-input">
+                    <textarea name="description" placeholder="相册描述..." class="gradient-input"></textarea>
+                    <div class="cover-upload">
+                        <label for="cover-image" class="cover-label">
+                            <i class="fas fa-image"></i>
+                            <span>选择封面图片</span>
+                        </label>
+                        <input type="file" id="cover-image" accept="image/*" hidden>
+                        <div class="cover-preview"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="gradient-btn-outline cancel-btn">取消</button>
+                        <button type="submit" class="gradient-btn">创建</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 照片上传弹窗 -->
+    <div class="modal" id="upload-photos-modal">
+        <div class="modal-content gradient-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-upload"></i> 上传照片</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="upload-form">
+                    <select name="album" class="gradient-select" required>
+                        <option value="">选择相册</option>
+                        <option value="new">创建新相册</option>
+                    </select>
+                    <div class="upload-area">
+                        <label for="photo-upload" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>点击或拖放照片上传</span>
+                            <small>支持jpg、png、gif格式</small>
+                        </label>
+                        <input type="file" id="photo-upload" accept="image/*" multiple hidden>
+                        <div class="upload-preview"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="gradient-btn-outline cancel-btn">取消</button>
+                        <button type="submit" class="gradient-btn">上传</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 照片预览弹窗 -->
+    <div class="modal" id="photo-preview-modal">
+        <div class="modal-content photo-preview-content">
+            <button class="close-btn">&times;</button>
+            <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <div class="photo-container">
+                <img src="" alt="预览图片">
+            </div>
+            <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="photo-info">
+                <div class="photo-details">
+                    <span class="photo-date"><i class="fas fa-calendar"></i> 2024-01-20</span>
+                    <span class="photo-location"><i class="fas fa-map-marker-alt"></i> 杭州</span>
+                </div>
+                <div class="photo-actions">
+                    <button class="action-btn download-btn" title="下载">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="action-btn share-btn" title="分享">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="action-btn favorite-btn" title="收藏">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="gradient-footer">
+        <div class="container">
+            <p>&copy; 2024 Life Record. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="photos.js"></script>
+</body>
+</html> 
